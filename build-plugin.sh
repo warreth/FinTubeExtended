@@ -72,7 +72,7 @@ fi
 ZIP_NAME="${PLUGIN_NAME}_${VERSION}.zip"
 mkdir -p "$PUBLISH_DIR"
 cd "$DIST_DIR"
-zip -r "../$PUBLISH_DIR/$ZIP_NAME" .
+zip -r "../$PUBLISH_DIR/$ZIP_NAME" *
 cd ..
 
 echo "✅ Package created at $PUBLISH_DIR/$ZIP_NAME"
