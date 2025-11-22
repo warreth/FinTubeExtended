@@ -50,29 +50,13 @@ rm -rf "$DIST_DIR" "$PUBLISH_DIR"
 # Build
 dotnet publish "$PROJECT_PATH" -c Release -o "$DIST_DIR"
 
-# --- Debloat & Cleanup ---
-echo ">>> Cleaning up unnecessary files..."
-# Remove Jellyfin core binaries (provided by the server)
-rm -f "$DIST_DIR"/Jellyfin.Controller.dll
-rm -f "$DIST_DIR"/Jellyfin.Model.dll
-rm -f "$DIST_DIR"/Jellyfin.Common.dll
-rm -f "$DIST_DIR"/Microsoft.Extensions.*.dll
-rm -f "$DIST_DIR"/System.*.dll
-
-# Remove debug symbols and documentation (optional, for smaller size)
-rm -f "$DIST_DIR"/*.pdb
-rm -f "$DIST_DIR"/*.xml
-
-# Ensure meta.json is present (copied by csproj or script)
-if [ ! -f "$DIST_DIR/meta.json" ]; then
-    cp "$META_JSON" "$DIST_DIR/"
-fi
-
 # Package
+echo ">>> Packaging ${PLUGIN_NAME}.dll..."
 ZIP_NAME="${PLUGIN_NAME}_${VERSION}.zip"
 mkdir -p "$PUBLISH_DIR"
 cd "$DIST_DIR"
-zip -r "../$PUBLISH_DIR/$ZIP_NAME" *
+# Only zip the main DLL as requested (Jellyfin guidelines: minimal artifacts)
+zip "../$PUBLISH_DIR/$ZIP_NAME" "${PLUGIN_NAME}.dll"
 cd ..
 
 echo "✅ Package created at $PUBLISH_DIR/$ZIP_NAME"
