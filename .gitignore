@@ -2,7 +2,9 @@ Jellyfin.Plugin.FinTube/bin
 Jellyfin.Plugin.FinTube/obj
 
 #Ignore test files and folders
-test/
+test/cache
+test/config
+test/media
 .dockerignore
 
 # Ignore build output folders

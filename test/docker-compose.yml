@@ -1,0 +1,38 @@
+services:
+  jellyfin-fintube:
+    build:
+      context: ..
+      dockerfile: test/Dockerfile
+    container_name: jellyfin-fintube
+    image: jellyfin-fintube:latest
+    restart: unless-stopped
+    ports:
+      - "8098:8096"
+      - "8922:8920"
+      - "7360:7359/udp"
+      - "1901:1900/udp"
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media:ro
+    environment:
+      - JELLYFIN_PublishedServerUrl=http://localhost:8098
+      - TZ=Europe/Brussels
+    networks:
+      - jellyfin-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8096/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  jellyfin_config:
+    driver: local
+  jellyfin_cache:
+    driver: local
+
+networks:
+  jellyfin-network:
+    driver: bridge
