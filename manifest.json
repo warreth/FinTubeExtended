@@ -1,7 +1,7 @@
 [
   {
     "guid": "d20aa9ed-eafc-4578-b320-4e3b7093129c",
-    "name": "FinTube",
+    "name": "FinTubeExtended",
     "overview": "Import Videos/Music from YouTube",
     "description": "Lets you download YT videos as mp4 or mp3. Requires yt-dlp/youtube-dl and (optionally) id3v2 for tags.",
     "owner": "WarreTh (Forked from 'AECX')",
@@ -13,8 +13,8 @@
         "changelog": "Forked from original FinTube plugin to add more features and improvements.",
         "targetAbi": "10.8.1.0",
         "sourceUrl": "https://github.com/warreth/FinTubeExtended/releases/download/v2.0.0/Jellyfin.Plugin.FinTube_2.0.0.zip",
-        "checksum": "5620485d489b4a8ac61c42f75822ee2e",
-        "timestamp": "2025-11-22T08:32:39Z"
+        "checksum": "fed42c0bbfc57c2ecc0c5c2dd4b992f2",
+        "timestamp": "2025-11-22T09:25:38Z"
       },
       {
         "version": "1.1.0.0",
