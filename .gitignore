@@ -1,2 +1,11 @@
 Jellyfin.Plugin.FinTube/bin
 Jellyfin.Plugin.FinTube/obj
+
+#Ignore test files and folders
+test/
+.dockerignore
+
+# Ignore build output folders
+dist/
+publish/
+

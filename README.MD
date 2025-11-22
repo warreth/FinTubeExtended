@@ -1,35 +1,64 @@
-# FinTube
+# FinTube Extended
 
-Easily add content from YouTube to your Jellyfin installation
+> **⚠️ IMPORTANT WARNING**
+>
+> If you have the original **FinTube** plugin installed, you **MUST** uninstall it and restart your Jellyfin server before installing FinTube Extended. Failure to do so may cause conflicts.
 
-![](https://raw.githubusercontent.com/AECX/FinTube/master/Assets/logo.png)
+Easily add content from YouTube to your Jellyfin installation. This is an extended fork of the original FinTube plugin.
+
+![FinTube Logo](https://raw.githubusercontent.com/warreth/FinTubeExtended/master/Assets/logo.png)
 
 ## Dependencies
 
-FinTube requires [YouTube-DL/YouTube-DLP](https://github.com/yt-dlp/yt-dlp) and [id3v2](https://sourceforge.net/projects/id3v2/) for full functionality, however YT-DLP is sufficient for operation.
+FinTube Extended requires [yt-dlp](https://github.com/yt-dlp/yt-dlp) (recommended) or YouTube-DL.
+For full functionality (metadata tagging), [id3v2](https://sourceforge.net/projects/id3v2/) is also required.
 
-Check the link above to install YT-DLP and install id3v2:
+### Installing Dependencies
 
-- Debian/Ubuntu `# sudo apt install id3v2`
-- Arch `# sudo pacman -S id3v2`
+**Debian/Ubuntu:**
 
-For other OS please check your package manager.
+```bash
+sudo apt update
+sudo apt install yt-dlp id3v2
+```
 
-## Install
+**Arch Linux:**
 
-### Add my Repository
+```bash
+sudo pacman -S yt-dlp id3v2
+```
 
-1. In your Admin Dashboard navigate to "Plugins"
-2. Switch to the "Repositories" tab
-3. Click "+" and add the Repository `https://raw.githubusercontent.com/AECX/FinTube/master/manifest.json`
-   Name it "HenkeGG" or "AECX" - Or whatever helps you remember
+For other operating systems, please check your package manager or the official documentation for [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
-### Install and configure the plugin
+## Installation
 
-1. Switch to the "Catalog" tab
-2. Search for the "FinTube" plugin and click install
-3. Restart the Server and head back to the "Plugins" Sections
-4. Click on FinTube and Select "Settings", enter a valid executable for yt-dlp/youtube-dl
-5. Optionally: Enter a valid executable for id3v2 to be able to Tag Music with Artist, Title, Album and Track information
+### 1. Add the Repository
 
-Now you are ready to go, head to the "FinTube" plugin page (at the bottom of your dashboard navigation), enter information as desired to start importing from YouTube.
+1. Open your Jellyfin Dashboard and navigate to **Plugins**.
+2. Click on the **Repositories** tab.
+3. Click the **+** button to add a new repository.
+4. Enter the following URL:
+
+   ```text
+   https://raw.githubusercontent.com/warreth/FinTubeExtended/master/manifest.json
+   ```
+
+5. Name it "FinTube Extended" (or whatever you prefer).
+
+### 2. Install the Plugin
+
+1. Switch to the **Catalog** tab.
+2. Search for **FinTube** and click **Install**.
+3. **Restart your Jellyfin Server** to apply changes.
+
+## Configuration
+
+1. Go to **Dashboard** > **Plugins** > **FinTube**.
+2. Click on **Settings**.
+3. Enter the path to your `yt-dlp` executable (e.g., `/usr/bin/yt-dlp`).
+4. (Optional) Enter the path to your `id3v2` executable for better music tagging.
+5. Save the configuration.
+
+## Usage
+
+Navigate to the **FinTube** page (usually found in the sidebar or under "My Media" depending on your client) to start importing content from YouTube.
